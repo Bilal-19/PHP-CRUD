@@ -24,7 +24,7 @@
         <div class="row">
             <h2 class="fw-light text-center mb-5">Employment <span class="fw-medium">Application Form</span></h2>
         </div>
-        <form action="" autcomplete="off">
+        <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" autcomplete="off">
             <div class="row">
                 <div class="col-md-4 mb-2">
                     <label for="fname" class="form-label mb-0">First Name: </label>
