@@ -19,7 +19,74 @@
 </head>
 
 <body>
+    <!-- Backend -->
+    <?php
+    // Set empty variables
+    $fname = "";
+    $mname = "";
+    $lname = "";
+    $age = "";
+    $experience = "";
+    $email = "";
+    $gender = "";
+    $nationality = "";
+    $designation = "";
+    $latestQualification = "";
+    $resume = "";
+    $joinDate = "";
+    $coverLetter = "";
 
+
+    //  Check server request method
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fname = $_POST['fname'];
+        $mname = $_POST['mname'];
+        $lname = $_POST['lname'];
+        $age = $_POST['age'];
+        $experience = $_POST['experience'];
+        $email = $_POST['email'];
+        $gender = $_POST['gender'];
+        $nationality = $_POST['nationality'];
+        $designation = $_POST['designation'];
+        $latestQualification = $_POST['latestQualification'];
+        $resume = $_POST['resume'];
+        $joinDate = $_POST['joinDate'];
+        $coverLetter = $_POST['coverLetter'];
+    }
+
+    // Store data receive from Frontend to Backend
+    
+    // DB Connection
+    $connection = mysqli_connect("localhost", "root", "", "company");
+    if ($connection) {
+        echo "Connected to database";
+        // Store new entry to DB;
+        $query = "INSERT INTO employees
+        (
+        firstName, middleName, lastName, age, experience, emailAddress, gender, nationality,
+        designation, lastQualification, resumePath, joinDate, coverLetter
+        )
+         VALUES (
+        '$fname','$mname','$lname',
+        '$age',
+        '$experience', 
+        '$email', '$gender',
+        '$nationality','$designation',
+        '$latestQualification','$resume',
+        '$joinDate','$coverLetter'
+        )";
+
+        if (mysqli_query($connection, $query)) {
+            echo "New record added successfully";
+        } else {
+            echo "Failed to add new record.";
+        }
+    } else {
+        echo "Failed to connect with database";
+    }
+    ?>
+
+    <!-- Frontend -->
     <div class="container-fluid p-4">
         <div class="row">
             <h2 class="fw-light text-center mb-5">Employment <span class="fw-medium">Application Form</span></h2>
@@ -62,10 +129,10 @@
                     <label for="gender" class="form-label mb-0">Gender: </label>
                     <br>
                     <label for="gender">
-                        <input type="radio" id="gender" name="gender"> Male
+                        <input type="radio" id="gender" name="gender" value="Male"> Male
                     </label>
                     <label for="gender">
-                        <input type="radio" id="gender" name="gender"> Femaie
+                        <input type="radio" id="gender" name="gender" value="Female"> Femaie
                     </label>
                 </div>
 

@@ -1,0 +1,2 @@
+INSERT INTO employees 
+VALUES (1,"Bilal","Muhammad","Yousuf",24,'1.4 years', 'bilal@gmail.com', 'male','Pakistani','Backend Developer','Graduation','./resume.pdf','08/20/2025','Ive experienced that is required for this role');
