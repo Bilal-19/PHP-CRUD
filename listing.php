@@ -23,8 +23,9 @@
 
 <body>
     <?php
-    // Read data from database
-    $dbConnection = mysqli_connect("localhost", "root", "", "company");
+    // Include configuration file
+    require_once "db-config.php";
+    
 
     $readQuery = "SELECT * FROM employees";
 

@@ -95,8 +95,8 @@
         // Store data receive from Frontend to Backend
     
         // DB Connection
-        $connection = mysqli_connect("localhost", "root", "", "company");
-        if ($connection) {
+        require_once "db-config.php";
+        if ($dbConnection) {
             echo "Connected to database";
             // Store new entry to DB;
             $query = "INSERT INTO employees
@@ -114,7 +114,7 @@
         '$joinDate','$coverLetter'
         )";
 
-            if (mysqli_query($connection, $query)) {
+            if (mysqli_query($dbConnection, $query)) {
                 echo "New record added successfully";
             } else {
                 echo "Failed to add new record.";
