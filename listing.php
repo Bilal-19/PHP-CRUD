@@ -25,7 +25,7 @@
     <?php
     // Include configuration file
     require_once "db-config.php";
-    
+
 
     $readQuery = "SELECT * FROM employees";
 
@@ -50,17 +50,16 @@
                         <?php
                         while ($val = mysqli_fetch_assoc($execQuery)) {
                             echo "<tr>";
-                            echo "<td> {$val['ID']} </td>";
-                            echo "<td> {$val['firstName']} {$val['middleName']} {$val['lastName']} </td>";
-                            echo "<td> {$val['age']} </td>";
-                            echo "<td> {$val['experience']} </td>";
-                            echo "<td> {$val['resumePath']} </td>";
-                            echo
-                                "<td> 
-                                    <a class='text-success'><i class='fa fa-eye'></i></a>
-                                    <a class='mx-1 text-primary'><i class='fas fa-edit'></i></a>
-                                    <a class='text-danger'><i class='fa-solid fa-trash'></i></a>
-                            </td>";
+                                echo "<td> {$val['ID']} </td>";
+                                echo "<td> {$val['firstName']} {$val['middleName']} {$val['lastName']} </td>";
+                                echo "<td> {$val['age']} </td>";
+                                echo "<td> {$val['experience']} </td>";
+                                echo "<td> {$val['resumePath']} </td>";
+                                echo "<td>";
+                                    echo '<a href="read.php?id=' . $val["ID"] . '" class="text-success"><i class="fa fa-eye"></i></a>';
+                                    echo '<a href="edit.php?id=' . $val["ID"] . '" class="mx-1 text-primary"><i class="fas fa-edit"></i></a>';
+                                    echo '<a href="delete.php?id = ' . $val["ID"] . '" class="text-danger"><i class="fa-solid fa-trash"></i></a>';
+                                echo "</td>";
                             echo "</tr>";
                         }
                         ?>
