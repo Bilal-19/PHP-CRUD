@@ -26,11 +26,38 @@
     $readQuery = "SELECT * FROM employees";
 
     $execQuery = mysqli_query($dbConnection, $readQuery);
-
-    while ($val = mysqli_fetch_assoc($execQuery)) {
-        echo $val['ID'] . " " . $val['firstName'];
-    }
     ?>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Employee Name</th>
+                            <th>Age</th>
+                            <th>Experience</th>
+                            <th>Resume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($val = mysqli_fetch_assoc($execQuery)) {
+                            echo "<tr>";
+                            echo "<td> {$val['ID']} </td>";
+                            echo "<td> {$val['firstName']} {$val['middleName']} {$val['lastName']} </td>";
+                            echo "<td> {$val['age']} </td>";
+                            echo "<td> {$val['experience']} </td>";
+                            echo "<td> {$val['resumePath']} </td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
